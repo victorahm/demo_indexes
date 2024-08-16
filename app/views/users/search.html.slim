@@ -1,0 +1,48 @@
+h1 Search
+= form_tag search_users_path, method: :get do
+  p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", name: nil
+
+- if params[:search]
+  h2 Results
+  table[border="1"]
+    thead
+      tr
+        th With index
+        th Without index
+    tbody
+      tr
+        td
+          - if @user1
+            dl
+              dt ID
+              dd= @user1.id
+              dt Name
+              dd= @user1.full_name
+              dt Email
+              dd= @user1.email
+              dt Username
+              dd= @user1.username
+              dt Login
+              dd= @user1.login
+              dt Created at
+              dd= @user1.created_at
+        td
+          - if @user2
+            dl
+              dt ID
+              dd= @user2.id
+              dt Name
+              dd= @user2.full_name
+              dt Email
+              dd= @user2.email
+              dt Username
+              dd= @user2.username
+              dt Login
+              dd= @user2.login
+              dt Created at
+              dd= @user2.created_at
+      tr
+        td= @time1
+        td= @time2
